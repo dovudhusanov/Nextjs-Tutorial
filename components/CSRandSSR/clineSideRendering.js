@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
-function Apiw() {
+function ClineSideRendering() {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
 
-    async function fetchData() {
+    function fetchData() {
         setLoading(true)
-        await axios.get("https://jsonplaceholder.typicode.com/todos")
+        axios.get("https://jsonplaceholder.typicode.com/todos")
             .then(data => {
                 setData(data.data.slice(0, 10))
                 console.log(data.data)
@@ -39,4 +39,4 @@ function Apiw() {
     );
 }
 
-export default Apiw;
+export default ClineSideRendering;

@@ -1,9 +1,8 @@
 export async function getStaticProps({params}) {
-    const characterId = params.characterId.replace(/\-/g)
-    const results = await fetch(`https://jsonplaceholder.typicode.com/users?username=${characterId}`)
+    const results = await fetch(`https://jsonplaceholder.typicode.com/users?username=${params.characterId}`)
         .then(res => res.json())
 
-    return{
+    return {
         props: {
             character: results[0]
         }
@@ -13,10 +12,10 @@ export async function getStaticProps({params}) {
 export async function getStaticPaths() {
     const characters = await fetch("https://jsonplaceholder.typicode.com/users?perPage=10")
         .then(res => res.json())
-    return{
+    return {
         paths: characters.map(character => {
-            const characterId = character.name.toLowerCase().replace(/ /g, "-")
-            return{
+            const characterId = character.username
+            return {
                 params: {
                     characterId
                 }
@@ -27,10 +26,15 @@ export async function getStaticPaths() {
 }
 
 function Character({character}) {
+    console.log(character.username)
     return (
-        <div className="container mt-5">
-            <h1>{character?.name}</h1>
-        </div>
+        <>
+            <div className="container" style={{marginTop: 100}}>
+                <h1>name: {character.name}</h1>
+                <h2>username: {character?.username}</h2>
+                <h2>username: {character?.email}</h2>
+            </div>
+        </>
     );
 }
 

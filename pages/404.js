@@ -7,11 +7,11 @@ function PageNotFound() {
 
     const router = useRouter()
 
-    useEffect(() => {
-        setTimeout(() => {
-            router.pathname === "/404"
-        }, 3000)
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         router.push("/")
+    //     }, 3700)
+    // }, [router])
 
     return (
         <>

@@ -1,9 +1,9 @@
 import '../styles/globals.css';
-import Layout from "../components/Layout";
 import Head from "next/head";
 import "../styles/global2.scss"
-import ClineSideRendering from "../components/CSRandSSR/clineSideRendering";
-import ServerSideRendering from "../components/CSRandSSR/serverSideRendering";
+import { NextSeo } from "next-seo";
+import React from "react";
+import {Provider} from "next-auth/client";
 
 function MyApp({Component, pageProps}) {
     return (
@@ -16,9 +16,19 @@ function MyApp({Component, pageProps}) {
                       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
                       crossorigin="anonymous"/>
             </Head>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <NextSeo
+                title="next js"
+                titleTemplate="Dovudhon Husanov"
+                description="this is for tutorial"
+                facebook="https://www.facebook.com/dovudhonkhusanov/"
+                twitter="https://twitter.com/dovudhonhusanov"
+            />
+            
+            <Provider session={pageProps.session}>
+                {/*<Layout>*/}
+                    <Component {...pageProps} />
+                {/*</Layout>*/}
+            </Provider>
         </>
 
     )

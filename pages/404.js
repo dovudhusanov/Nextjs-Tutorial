@@ -1,17 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Link from "next/link";
 import Head from "next/head";
-import {useRouter} from "next/router";
 
 function PageNotFound() {
-
-    const router = useRouter()
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         router.push("/")
-    //     }, 3700)
-    // }, [router])
 
     return (
         <>
